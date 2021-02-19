@@ -1,0 +1,24 @@
+const Excel = require('exceljs');
+
+const filename ='test.xlsx';
+
+const wb = new Excel.Workbook();
+const ws = wb.addWorksheet('Foo');
+
+ws.getCell('A1').value = {
+  hyperlink: 'mailto:patilv@cybage.com',
+  text: 'ExcelJS',
+  tooltip: 'https://www.npmjs.com/package/exceljs',
+};
+
+ws.getCell('A1').font = {color: {argb: "004e47cc"}};
+
+wb.xlsx
+  .writeFile(filename)
+  .then(() => {
+    console.log('Done.');
+    console.log('Time taken:', );
+  })
+  .catch(error => {
+    console.log(error.message);
+  });
